@@ -1,0 +1,194 @@
+<style>
+    /* General container and typography */
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .section {
+        padding: 10px;
+        margin: 30px;
+        background-color: #fcfcfcad;
+        border: 2px;
+        border-radius: 10px;
+    }
+
+    .section-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+        font-size: 18px;
+        color: #666;
+        max-width: 800px;
+        margin: 0 auto 50px auto;
+        line-height: 1.6;
+    }
+
+    /* Main content layout (image + grid) */
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        /* Allows wrapping on smaller screens */
+        gap: 30px;
+        /* Space between the image column and features grid */
+    }
+
+    .image-column {
+        margin-top: auto;
+        margin-bottom: auto;
+        flex: 1;
+        /* Takes up available space */
+        min-width: 300px;
+        /* Minimum width for the image column */
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        /* Ensures image corners are rounded */
+    }
+
+    .main-image {
+        width: 100%;
+        height: 100%;
+        /* Make image fill the column height */
+        object-fit: cover;
+        /* Cover the area, cropping if necessary */
+        border-radius: 12px;
+        display: block;
+        /* Remove extra space below image */
+    }
+
+    .features-grid {
+        background: #fff;
+        padding: 36px;
+        flex: 2;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    /* Feature Card Styling */
+    .feature-card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 25px;
+        text-align: left;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: transform 0.2s ease-in-out;
+        display: flex;
+        /* For icon and text alignment */
+        flex-direction: column;
+        justify-content: flex-start;
+        /* Align content to the top */
+        min-height: 180px;
+        /* Ensure cards have a consistent height */
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        color: #637DFE;
+    }
+
+    .feature-card i {
+        font-size: 5px;
+        /* Icon size */
+        color: #0b0b0b;
+        /* Primary brand color for icons */
+        margin-top: 8px;
+        margin-bottom: 8px;
+        margin-left: auto;
+        margin-right: 5px;
+        display: block;
+        /* Ensures icon is on its own line */
+        float: left;
+    }
+
+    .feature-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .feature-description {
+        font-size: 14px;
+        color: #777;
+        line-height: 1.5;
+        margin-bottom: 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .content {
+            flex-direction: column;
+            /* Stack columns on medium screens */
+        }
+
+        .image-column {
+            min-width: unset;
+            /* Remove min-width when stacked */
+            width: 100%;
+            height: auto;
+            /* Allow image height to adjust */
+        }
+
+        .main-image {
+            max-height: 400px;
+            /* Limit image height on smaller screens */
+        }
+
+        .features-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            /* Adjust grid for smaller screens */
+        }
+    }
+
+    @media (max-width: 576px) {
+        .section-title {
+            font-size: 28px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+        }
+
+        .feature-card {
+            padding: 20px;
+            min-height: unset;
+            /* Remove min-height for very small screens */
+        }
+
+        .feature-title {
+            font-size: 18px;
+        }
+
+        .feature-description {
+            font-size: 14px;
+        }
+    }
+</style>
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Why Join MEDZY</h2>
+        <p>MEDZY enables doctors to deliver professional home-based and online consultations through a structured
+            digital platform. It helps extend care beyond clinics and hospitals while maintaining full clinical control.
+        </p>
+
+        <h2 class="section-title">How MEDZY Helps You</h2>
+        <p>MEDZY enables doctors to deliver professional home-based and online consultations through a structured
+            digital platform. It helps extend care beyond clinics and hospitals while maintaining full clinical control.
+        </p>
+
+        <h2 class="section-title">Why Join MEDZY</h2>
+        <p>MEDZY enables doctors to deliver professional home-based and online consultations through a structured
+            digital platform. It helps extend care beyond clinics and hospitals while maintaining full clinical control.
+        </p>
+
+</section>

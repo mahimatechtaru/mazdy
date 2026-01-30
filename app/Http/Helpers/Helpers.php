@@ -470,6 +470,10 @@ function files_path($slug)
             'width'             => 414,
             'height'            => 896,
         ],
+        'documents' => [
+            'path'      => 'backend/images/document',
+        ],
+
     ];
 
     return (object) $data[$slug];

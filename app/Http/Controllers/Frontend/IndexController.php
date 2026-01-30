@@ -15,6 +15,7 @@ use App\Models\Admin\SiteSections;
 use App\Models\Admin\BlogCategory;
 use App\Models\Frontend\ContactRequest;
 use App\Models\Hospital\Branch;
+use App\Models\Frontend\FranchiseeApplication;
 use App\Models\Hospital\Doctor;
 use App\Models\Hospital\HealthPackage;
 use App\Models\Hospital\Hospital;
@@ -24,6 +25,7 @@ use App\Models\ServicePrice;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use App\Models\Frontend\KnowledgeCenter;
 
 
 class IndexController extends Controller
@@ -110,6 +112,52 @@ class IndexController extends Controller
             'page_title'
         ));
     }
+
+    public function franchise()
+    {
+        $page_title             = __("Franchise");
+
+        return view('frontend.pages.franchise', compact(
+            'page_title'
+        ));
+    }
+
+    public function knowledge_center()
+    {
+        $page_title             = __("Knowledge Center");
+        $KnowledgeCenter = KnowledgeCenter::orderByDesc("id")->paginate(10);
+        return view('frontend.pages.knowledge_center', compact(
+            'page_title',
+            'KnowledgeCenter'
+        ));
+    }
+
+    public function franchise_store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'full_name' => 'required|string|max:100',
+            'mobile_number' => 'required|digits:10|unique:franchisee_applications,mobile_number',
+            'email' => 'nullable|email|max:100|unique:franchisee_applications,email',
+            'city' => 'required|string|max:100',
+            'state' => 'required|string|max:100',
+            'business_type' => 'required|string|max:100',
+            'operating_centre' => 'required|in:Yes,No',
+            'message' => 'nullable|string|max:1000',
+            'consent' => 'accepted',
+        ], [
+            'consent.accepted' => 'You must agree to be contacted by our team before submitting.',
+        ]);
+
+        // ✅ Convert checkbox to 1/0
+        $validatedData['consent'] = $request->has('consent') ? 1 : 0;
+
+        FranchiseeApplication::create($validatedData);
+
+        return redirect()->back()->with('success', 'Thank you for your interest in partnering with us! Our franchise team will reach out to you soon with complete details.');
+    }
+
+
+
 
     public function healthPackage(Request $request)
     {
