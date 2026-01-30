@@ -3,7 +3,7 @@
 @push('css')
     <style>
         .red {
-            color: #EB0401;
+            color: #eb0501d8;
         }
 
         .13px {
